@@ -1,0 +1,7 @@
+[package]
+default-run = "b1"
+name = "packages_crates"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
