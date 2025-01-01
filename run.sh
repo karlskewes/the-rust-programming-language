@@ -34,7 +34,7 @@ coverage() { ## Code coverage with tarpaulin
 }
 
 cw() { ## Cargo watch all the things
-	cargo-watch -x check -x test -x run
+	cargo-watch -x check -x test -x "run $*"
 }
 
 doc() { ## Open cargo docs in browser
