@@ -49,7 +49,11 @@ lint() { ## Lint with clippy
 	cargo clippy -- -D warnings
 }
 
-one-arg-that-is-very-long() { ## Example that requires 1 arg <arg>
+t() { ## Cargo test <args>
+	cargo test "$*"
+}
+
+z-example-with-arg() { ## Example that requires 1 arg <arg>
 	if [ $# -ne 1 ]; then
 		echo 1>&2 "Usage: $0 ${FUNCNAME[0]} <arg>"
 		exit 3
