@@ -44,28 +44,27 @@ impl Config {
                 ));
             }
         };
-        // not technically correct. IGNORE_CASE=false cargo run ... does case insensitive.
-        // let ignore_case: bool = env::var("IGNORE_CASE").is_ok();
-        // correct implementation below.
-
-        // use arg if supplied else attempt to use env var.
-        // if not specified via either method or unsupported value then set false.
-
-        let val: String = match args.get(3) {
-            Some(arg) => arg.to_lowercase(),
-            _ => match env::var("IGNORE_CASE") {
-                Ok(value) => value.to_lowercase(),
-                _ => "false".to_string(),
+        // not technically correct:
+        // - IGNORE_CASE=false cargo run ... case insensitive.
+        // - let ignore_case: bool = env::var("IGNORE_CASE").is_ok();
+        //  - correct implementation below.
+        let val: String = args.get(3).map_or_else(
+            || {
+                env::var("IGNORE_CASE").map_or_else(
+                    |_| "false".to_string(), // fallback
+                    |v| v.to_lowercase(),
+                )
             },
-        };
+            |arg| arg.to_lowercase(),
+        );
 
         let ignore_case: bool = val == "true" || val == "1";
 
-        return Ok(Config {
+        Ok(Self {
             query,
             file_path,
             ignore_case,
-        });
+        })
     }
 }
 
