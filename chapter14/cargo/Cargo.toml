@@ -1,0 +1,14 @@
+[package]
+name = "my_crate"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+
+# Customize builds with profile section, below defaults
+# faster compile dev, more optimisations release
+[profile.dev]
+opt-level = 0 # min
+
+[profile.release]
+opt-level = 3 # max

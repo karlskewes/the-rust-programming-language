@@ -1,0 +1,6 @@
+# No [package] here
+
+[workspace]
+resolver = "3"  # latest version of Cargo's resolver algorithm
+# added automatically by `cargo new adder` and `cargo new add_one --lib`
+members = ["add_one", "add_two", "adder"]

@@ -35,6 +35,7 @@ impl Config {
                 ));
             }
         };
+
         let file_path: String = match args.get(2) {
             Some(arg) => arg.to_string(),
             _ => {
