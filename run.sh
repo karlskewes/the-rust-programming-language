@@ -33,8 +33,8 @@ coverage() { ## Code coverage with tarpaulin
 	cargo tarpaulin --ignore-tests
 }
 
-cw() { ## Cargo watch all the things
-	cargo-watch -x check -x test -x "run $*"
+b() { ## bacon all the things
+	bacon "$*"
 }
 
 doc() { ## Open cargo docs in browser
